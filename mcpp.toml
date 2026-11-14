@@ -1,0 +1,54 @@
+# Module wrapper; upstream API preserved. Policy: mcpp-index/docs/mwrap.md.
+[package]
+namespace   = "mcpplibs.mwrap"
+name        = "basis_universal"
+version     = "2.50"
+description = "Basis Universal 2.50's transcoder as C++ modules for mcpp (import mcpplibs.mwrap.basis_universal;): KTX2 and .basis textures to pixels or to a GPU's own compressed format"
+license     = "Apache-2.0"
+authors     = ["mcpp-community"]
+repo        = "https://github.com/mcpplibs/basis-universal-m"
+platforms   = ["linux", "macos", "windows"]
+
+[targets.basis_universal]
+kind = "lib"
+
+[build]
+# The transcoder is vendored byte for byte from the v2_50 release under
+# upstream/basis_universal and built as upstream's own build does with its
+# defaults: every format on, KTX2 on, Zstandard on — the decoder upstream ships
+# beside the transcoder (zstd/zstddeclib.c) — with one choice: floating-point
+# contraction off, so that what is worked out in floating point gives the same
+# bytes on every machine. The encoder is not here (upstream/documents.json).
+sources      = ["src/*.cppm", "upstream/basis_universal/transcoder/basisu_transcoder.cpp", "upstream/basis_universal/zstd/zstddeclib.c"]
+include_dirs = ["upstream/basis_universal"]
+cxxflags     = ["-ffp-contract=off"]
+
+[dev-dependencies]
+compat.gtest = "1.15.2"
+
+[package.metadata.mwrap]
+upstream-version = "2.50"
+
+[[runtime.deploy]]
+from = "LICENSE"
+to   = "licenses/basis_universal"
+
+[[runtime.deploy]]
+from = "NOTICE"
+to   = "licenses/basis_universal"
+
+[[runtime.deploy]]
+from = "upstream/basis_universal/README.md"
+to   = "licenses/basis_universal/upstream/basis_universal"
+
+[[runtime.deploy]]
+from = "upstream/basis_universal/LICENSE"
+to   = "licenses/basis_universal/upstream/basis_universal"
+
+[[runtime.deploy]]
+from = "upstream/basis_universal/NOTICE"
+to   = "licenses/basis_universal/upstream/basis_universal"
+
+[[runtime.deploy]]
+from = "upstream/basis_universal/zstd/LICENSE"
+to   = "licenses/basis_universal/upstream/basis_universal/zstd"

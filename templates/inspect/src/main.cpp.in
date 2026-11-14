@@ -1,0 +1,34 @@
+// What a KTX2 texture is, and its first picture as pixels, through
+// import mcpplibs.mwrap.basis_universal. With no file named: what this build
+// of the transcoder can write.
+import std;
+import mcpplibs.mwrap.basis_universal;
+
+int main(int argc, char** argv) {
+    basist::basisu_transcoder_init();
+    if (argc < 2) {
+        std::println("KTX2: {}, with Zstandard: {}", basist::basisu_transcoder_supports_ktx2(), basist::basisu_transcoder_supports_ktx2_zstd());
+        for (const auto format : {basist::transcoder_texture_format::cTFRGBA32, basist::transcoder_texture_format::cTFBC7_RGBA, basist::transcoder_texture_format::cTFETC2_RGBA,
+                                  basist::transcoder_texture_format::cTFASTC_4x4_RGBA})
+            std::println("{}: {} bytes a {}", basist::basis_get_format_name(format), basist::basis_get_bytes_per_block_or_pixel(format),
+                         basist::basis_transcoder_format_is_uncompressed(format) ? "pixel" : "block");
+        return 0;
+    }
+    std::ifstream in(argv[1], std::ios::binary);
+    const std::vector<char> bytes{std::istreambuf_iterator<char>(in), std::istreambuf_iterator<char>()};
+    basist::ktx2_transcoder transcoder;
+    if (!transcoder.init(bytes.data(), static_cast<std::uint32_t>(bytes.size())) || !transcoder.start_transcoding()) {
+        std::println("{} is not a KTX2 texture this transcoder reads", argv[1]);
+        return 1;
+    }
+    const std::uint32_t width = transcoder.get_width(), height = transcoder.get_height();
+    std::println("{}: {} x {}, {} levels, {}{}", argv[1], width, height, transcoder.get_levels(), transcoder.is_etc1s() ? "ETC1S" : transcoder.is_hdr() ? "HDR" : "UASTC or ASTC",
+                 transcoder.get_has_alpha() ? ", with alpha" : "");
+    std::vector<std::uint8_t> pixels(std::size_t{width} * height * 4);
+    if (!transcoder.transcode_image_level(0, 0, 0, pixels.data(), width * height, basist::transcoder_texture_format::cTFRGBA32)) {
+        std::println("its first picture could not be read");
+        return 1;
+    }
+    std::println("its first pixel: {} {} {} {}", pixels[0], pixels[1], pixels[2], pixels[3]);
+    return 0;
+}

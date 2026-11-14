@@ -1,0 +1,178 @@
+{
+  "upstream": "https://github.com/BinomialLLC/basis_universal/archive/refs/tags/v2_50.tar.gz",
+  "upstream_sha256": "216e49e1f4213d4bfa4afaa07527e16bac28533dddd444197d3aa19230ac130c",
+  "pruning": "Only the transcoder (transcoder/) and the Zstandard decoder upstream ships beside it (zstd/zstddeclib.c with zstd.h, zstd_errors.h and its LICENSE), with the README, LICENSE and NOTICE. Not vendored: the encoder (encoder/), the whole of Zstandard in one file (zstd/zstd.c: the encoder's), the command line tool, the C, Python and WebAssembly bindings, the WebGL and shader samples, the test files (three small KTX2 files of test_files/ are in tests/data), the build scripts.",
+  "documents": [
+    {
+      "path": "upstream/basis_universal/README.md",
+      "source": "https://github.com/BinomialLLC/basis_universal/blob/v2_50/README.md",
+      "sha256": "2e1dded1105e7c26dcdb9732307b255a8a745fc79cc4381733cf8a9fdf21960c"
+    },
+    {
+      "path": "upstream/basis_universal/LICENSE",
+      "source": "https://github.com/BinomialLLC/basis_universal/blob/v2_50/LICENSE",
+      "sha256": "065fcf48d6af21c0b75e23be5ed5753aee75c892e1c2cf178fa6736305614a5c"
+    },
+    {
+      "path": "upstream/basis_universal/NOTICE",
+      "source": "https://github.com/BinomialLLC/basis_universal/blob/v2_50/NOTICE",
+      "sha256": "a710c77f53231533f19fbc00e04a7109077f2dec74232b62a96f2ac1a1c04c85"
+    },
+    {
+      "path": "upstream/basis_universal/zstd/LICENSE",
+      "source": "https://github.com/BinomialLLC/basis_universal/blob/v2_50/zstd/LICENSE",
+      "sha256": "2c1a7fa704df8f3a606f6fc010b8b5aaebf403f3aeec339a12048f1ba7331a0b"
+    }
+  ],
+  "files": [
+    {
+      "path": "upstream/basis_universal/LICENSE",
+      "sha256": "065fcf48d6af21c0b75e23be5ed5753aee75c892e1c2cf178fa6736305614a5c"
+    },
+    {
+      "path": "upstream/basis_universal/NOTICE",
+      "sha256": "a710c77f53231533f19fbc00e04a7109077f2dec74232b62a96f2ac1a1c04c85"
+    },
+    {
+      "path": "upstream/basis_universal/README.md",
+      "sha256": "2e1dded1105e7c26dcdb9732307b255a8a745fc79cc4381733cf8a9fdf21960c"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu.h",
+      "sha256": "2724dd59acbd332d43dde5f15a9b546ed851c45c7c2acbcdcab4a288c58628e0"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_astc_cfgs.inl",
+      "sha256": "2f56d16cc37ddb6a5f361be42e3ab32ecbeefd94fd287d5bd46c15e0e1fdb34e"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_astc_hdr_core.h",
+      "sha256": "4d1e2b68275c7f402623ab0824722d7e8d6e85adc2fc747a44c07e5321b366d4"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_astc_helpers.h",
+      "sha256": "f698c23506c0e59f3bd4cb645bd3b4d071b06f1112a0cf6a0de19a19cff837f8"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_containers.h",
+      "sha256": "84a17dcb701dd22a44381ae226e3e9cdc9d361e74efc640d0ccb8bbbb081ee41"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_containers_impl.h",
+      "sha256": "9810baeca8b39497101997cf309c0cee153f096af21f1eb8e12c142410f5ef2a"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_dds_transcoder.inl",
+      "sha256": "18f731ebe27b311efda2a576b3bc76f1e1b541b25e9a790a9759f76effc61833"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_etc1_mods.inl",
+      "sha256": "ddf9efd40f07209c914f4051b94bbe1821915ae61b6ca39d61aafd0126c6dd0d"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_file_headers.h",
+      "sha256": "5988f2d27e41a3f36ef5a2e350675dd30bd1ee2c70853e42a1d796a74d8178a9"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_idct.h",
+      "sha256": "0b218ce8a9f72036c1e531387d2a168b950a2af2d5a40204f08a5ec381a2e4ee"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder.cpp",
+      "sha256": "244cf0da60941c0311feed5e9c01b9225d6ca796292391d808a4fa3cf9e406f2"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder.h",
+      "sha256": "d60e4d56c7dbc392ec476e484cc5030046ecd378c554a5ffa898ccd0e1ec1b08"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_internal.h",
+      "sha256": "9e12e4543d2872c4c0beb91bf9438d5bed1205d52358fd15671b747d8485369f"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_astc.inc",
+      "sha256": "7dd41c648d3ed8e7d511eb4af865669c4dd50b8ecead62a68fca471138c46e1a"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_astc_0_255.inc",
+      "sha256": "f41acb498be64349c48600e965664f4bec1161781169e3ec3411827c490ef4f8"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_atc_55.inc",
+      "sha256": "4a510a20bffc3738d85d41e44633d44145931aa5734affb390c7836ec8b5dabb"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_atc_56.inc",
+      "sha256": "94714b54f0c13c2f3ba5481fbfb40b974892048d59ab68419b369222f0a68075"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_bc7_m5_alpha.inc",
+      "sha256": "4d713b839594f429d95f329d60f8ad495e932619111b5dfddffb688e3634b495"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_bc7_m5_color.inc",
+      "sha256": "e6f63d3ebce0ac84d801ec54614b6a4eeda3be3e994f3abbfc732377cfe5a531"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_dxt1_5.inc",
+      "sha256": "500e640b5e6858fd10194eb4845670eb36d3ef9dc117a017632c1104ba3eb9d5"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_dxt1_6.inc",
+      "sha256": "3d203465f9097845eddb821943d312bf8cffb04d8f5ce09c18d4c6df40519ed3"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_pvrtc2_45.inc",
+      "sha256": "780711642098a91239ee37b3f9110469ee1c7da8dd9e440a43c7ba70f992ff9d"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_tables_pvrtc2_alpha_33.inc",
+      "sha256": "250d389235c0213757266441f72aee37cbe138a3c2a3f58b590ed53d6fb746fa"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_transcoder_uastc.h",
+      "sha256": "8796f8e755b868c56967e3d4d53089c2aaac7e1f345b03be1e975016fcbaf11e"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_xbc7_decoder.h",
+      "sha256": "7487d5c43fe2ff97aba5a3cee87cfcdcb433f003b72c47927d4d4aeebde7b2ea"
+    },
+    {
+      "path": "upstream/basis_universal/transcoder/basisu_xbc7_decoder.inl",
+      "sha256": "485b6c4b9297047430ea8124319501d58389d96da38642f59dafd974d88d65d1"
+    },
+    {
+      "path": "upstream/basis_universal/zstd/LICENSE",
+      "sha256": "2c1a7fa704df8f3a606f6fc010b8b5aaebf403f3aeec339a12048f1ba7331a0b"
+    },
+    {
+      "path": "upstream/basis_universal/zstd/zstd.h",
+      "sha256": "9b4bc8245565c98ccfc61c07749928b57e7c0f6fddb0530c4f6aa1971893d88b"
+    },
+    {
+      "path": "upstream/basis_universal/zstd/zstd_errors.h",
+      "sha256": "66a8c3f71d12ea6e797e4f622f31f3f8f81c41b36f48cad4f5de7d8bfb6aac0a"
+    },
+    {
+      "path": "upstream/basis_universal/zstd/zstddeclib.c",
+      "sha256": "3a007442219d631e3748113518dd723d577647c8c00ca3f70371d0c2f7bda5a8"
+    }
+  ],
+  "fixtures": [
+    {
+      "path": "tests/data/base_xuastc_arith.ktx2",
+      "source": "https://github.com/BinomialLLC/basis_universal/blob/v2_50/test_files/base_xuastc_arith.ktx2",
+      "sha256": "6e6d055e74a2a2068baad8882dbcbe1be6ab7fd00f6818a5b1b063dc2aa579ab"
+    },
+    {
+      "path": "tests/data/base_xuastc_zstd.ktx2",
+      "source": "https://github.com/BinomialLLC/basis_universal/blob/v2_50/test_files/base_xuastc_zstd.ktx2",
+      "sha256": "65d618f9216b83624f9dae3acfb944e8a3938c2267c5245c348a1267bf7691a5"
+    },
+    {
+      "path": "tests/data/kodim23.ktx2",
+      "source": "https://github.com/BinomialLLC/basis_universal/blob/v2_50/test_files/kodim23.ktx2",
+      "sha256": "0eb567d4e19be85562c74a77067631b7804d4042cc2ff78e161dc5915f8390a8"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+basis-universal-m: C++ module wrapper
+Copyright (c) 2026 mcpp-community contributors
+
+The wrapper contributions are licensed under the Apache License, Version 2.0.
+Upstream code, copied interfaces and dependencies retain their original
+licenses and copyright notices. Basis Universal is Copyright 2016-2026
+Binomial LLC and is distributed under the Apache License, Version 2.0; "Basis
+Universal" is a trademark of Binomial LLC. Its transcoder, with its README,
+LICENSE and NOTICE, is retained in upstream/basis_universal/. The Zstandard
+decoder upstream ships beside the transcoder (upstream/basis_universal/zstd/)
+is Copyright (c) Facebook, Inc. and is used under its BSD license, retained
+there. The test images in tests/data are from upstream's test_files/, which
+upstream states are not copyrighted or owned by Binomial LLC. Provenance and
+checksums are recorded in upstream/documents.json.

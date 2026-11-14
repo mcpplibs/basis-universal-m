@@ -1,0 +1,4 @@
+[template]
+description  = "Say what a KTX2 texture is and read its first picture as pixels with import mcpplibs.mwrap.basis_universal"
+default      = true
+post_message = "Run `mcpp run`, or `mcpp run -- a-texture.ktx2`."
