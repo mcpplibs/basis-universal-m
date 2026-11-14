@@ -12,8 +12,10 @@
 上游的 C++ API 不变：`basist::ktx2_transcoder`、`basist::basisu_transcoder`、
 `basist::transcoder_texture_format` 等都是上游的实体，位于上游声明它们的命名空间。
 转码器源码逐字节取自 v2_50 发布，由本包按上游默认构建方式编译——全部格式、KTX2、
-以及由上游随附的解码器提供的 Zstandard——只多一项选择：关闭浮点收缩。同一个文件在
-CI 构建的每个平台上给出相同的像素和相同的 BC7、ETC2、ASTC 块（测试中固定了哈希）。
+以及由上游随附的解码器提供的 Zstandard——只多两项选择：关闭浮点收缩；在每个目标上
+都启用不透明块的较大 ASTC 表（上游在 Emscripten 下关闭它，那里的 ASTC 块会与原生构建
+不同）。同一个文件在 CI 构建的每个平台上以及编译为 WebAssembly 时给出相同的像素和相同的
+BC7、ETC2、ASTC 块（测试中固定了哈希）。封装修订 2.50.1 加入第二项选择，2.50 没有。
 本包不含编码器。
 
 ## 模块
@@ -25,7 +27,7 @@ CI 构建的每个平台上给出相同的像素和相同的 BC7、ETC2、ASTC �
 ## 快速开始
 
 ```sh
-mcpp new texture --template mcpplibs.mwrap.basis_universal@2.50
+mcpp new texture --template mcpplibs.mwrap.basis_universal@2.50.1
 cd texture
 mcpp run -- a-texture.ktx2
 ```
@@ -35,7 +37,7 @@ mcpp run -- a-texture.ktx2
 
 ```toml
 [dependencies]
-mcpplibs.mwrap.basis_universal = "2.50"
+mcpplibs.mwrap.basis_universal = "2.50.1"
 ```
 
 ```cpp

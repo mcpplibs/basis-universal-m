@@ -14,10 +14,13 @@ The upstream C++ API is unchanged: `basist::ktx2_transcoder`,
 are the upstream entities, in the namespaces upstream declares them in. The
 transcoder's sources are vendored byte for byte from the v2_50 release and
 built by this package as upstream's default build does — every format, KTX2,
-and Zstandard by the decoder upstream ships beside it — with one choice:
-floating-point contraction off. The same file gives the same pixels and the
-same BC7, ETC2 and ASTC blocks on every platform CI builds (pinned hashes in
-the tests). The encoder is not in this package.
+and Zstandard by the decoder upstream ships beside it — with two choices:
+floating-point contraction off, and the larger ASTC table for opaque blocks
+on every target (upstream turns it off under Emscripten, where ASTC blocks
+then differ from a native build's). The same file gives the same pixels and
+the same BC7, ETC2 and ASTC blocks on every platform CI builds (pinned hashes
+in the tests) and as WebAssembly. Wrapper revision 2.50.1 adds the second
+choice, which 2.50 lacked. The encoder is not in this package.
 
 ## Modules
 
@@ -28,7 +31,7 @@ the tests). The encoder is not in this package.
 ## Getting started
 
 ```sh
-mcpp new texture --template mcpplibs.mwrap.basis_universal@2.50
+mcpp new texture --template mcpplibs.mwrap.basis_universal@2.50.1
 cd texture
 mcpp run -- a-texture.ktx2
 ```
@@ -39,7 +42,7 @@ transcoder can write.
 
 ```toml
 [dependencies]
-mcpplibs.mwrap.basis_universal = "2.50"
+mcpplibs.mwrap.basis_universal = "2.50.1"
 ```
 
 ```cpp

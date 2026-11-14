@@ -2,12 +2,12 @@
 [package]
 namespace   = "mcpplibs.mwrap"
 name        = "basis_universal"
-version     = "2.50"
+version     = "2.50.1"
 description = "Basis Universal 2.50's transcoder as C++ modules for mcpp (import mcpplibs.mwrap.basis_universal;): KTX2 and .basis textures to pixels or to a GPU's own compressed format"
 license     = "Apache-2.0"
 authors     = ["mcpp-community"]
 repo        = "https://github.com/mcpplibs/basis-universal-m"
-platforms   = ["linux", "macos", "windows"]
+platforms   = ["linux", "macos", "windows", "emscripten"]
 
 [targets.basis_universal]
 kind = "lib"
@@ -16,12 +16,15 @@ kind = "lib"
 # The transcoder is vendored byte for byte from the v2_50 release under
 # upstream/basis_universal and built as upstream's own build does with its
 # defaults: every format on, KTX2 on, Zstandard on — the decoder upstream ships
-# beside the transcoder (zstd/zstddeclib.c) — with one choice: floating-point
-# contraction off, so that what is worked out in floating point gives the same
-# bytes on every machine. The encoder is not here (upstream/documents.json).
+# beside the transcoder (zstd/zstddeclib.c) — with two choices, both so that
+# one file gives the same bytes on every target: floating-point contraction
+# off, and the larger ASTC table for opaque blocks on everywhere
+# (BASISD_SUPPORT_ASTC_HIGHER_OPAQUE_QUALITY=1: upstream's default for native
+# builds, which it turns off under Emscripten to save 64 KB — ASTC blocks
+# would differ there). The encoder is not here (upstream/documents.json).
 sources      = ["src/*.cppm", "upstream/basis_universal/transcoder/basisu_transcoder.cpp", "upstream/basis_universal/zstd/zstddeclib.c"]
 include_dirs = ["upstream/basis_universal"]
-cxxflags     = ["-ffp-contract=off"]
+cxxflags     = ["-ffp-contract=off", "-DBASISD_SUPPORT_ASTC_HIGHER_OPAQUE_QUALITY=1"]
 
 [dev-dependencies]
 compat.gtest = "1.15.2"
